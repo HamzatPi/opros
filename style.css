@@ -1,0 +1,414 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    min-height: 100vh;
+    background: #f5f0ee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+/* ===== ОСНОВНАЯ КАРТОЧКА ===== */
+.invitation-card {
+    max-width: 460px;
+    width: 100%;
+    background: rgba(255, 250, 248, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 32px;
+    padding: 40px 32px 48px;
+    box-shadow: 0 20px 60px rgba(80, 60, 55, 0.15);
+    border: 1px solid rgba(200, 180, 175, 0.3);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.greeting h1 {
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: #3d2c27;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.greeting p {
+    font-size: 1.1rem;
+    color: #7a6560;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+.greeting .divider {
+    width: 60px;
+    height: 1px;
+    background: #cbb5af;
+    margin: 20px auto 16px;
+}
+
+.invitation-card .sub {
+    font-size: 0.95rem;
+    color: #9a8580;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    margin-top: 12px;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(50, 40, 38, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: #fcf9f7;
+    border-radius: 40px;
+    max-width: 400px;
+    width: 100%;
+    padding: 44px 32px 40px;
+    box-shadow: 0 40px 80px rgba(40, 30, 28, 0.3);
+    border: 1px solid #ece2de;
+    text-align: center;
+}
+
+.modal-content h2 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #3d2c27;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+
+.modal-content .question {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #7a6560;
+    margin: 12px 0 32px;
+    letter-spacing: 1px;
+}
+
+.modal-content .question span {
+    display: inline-block;
+    margin: 0 4px;
+}
+
+/* ===== КНОПКИ ===== */
+.buttons-row {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.btn {
+    border: none;
+    background: transparent;
+    padding: 14px 44px;
+    border-radius: 60px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: 'Georgia', serif;
+    min-width: 120px;
+    border: 1px solid #d5c5bf;
+    color: #4d3a35;
+    background: #f5efec;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.btn-yes {
+    background: #e4d5cf;
+    border-color: #d0bbb3;
+    color: #3d2c27;
+    box-shadow: 0 4px 12px rgba(120, 90, 80, 0.12);
+}
+
+.btn-yes:hover {
+    background: #dccac2;
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(120, 90, 80, 0.18);
+}
+
+.btn-yes:active {
+    transform: scale(0.95);
+}
+
+.btn-no {
+    background: #ece3df;
+    border-color: #d5c5bf;
+    color: #6a5550;
+    position: relative;
+    transition: none;
+    cursor: default;
+}
+
+.btn-no:hover {
+    transform: none;
+    background: #ece3df;
+}
+
+/* ===== ПОЛЕ ВВОДА ===== */
+.meeting-input-area {
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid #e6d8d2;
+    display: none;
+    animation: slideUp 0.5s ease forwards;
+}
+
+.meeting-input-area.active {
+    display: block;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.meeting-input-area label {
+    font-size: 0.8rem;
+    color: #7a6560;
+    display: block;
+    margin-bottom: 16px;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.meeting-input-area input {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 60px;
+    border: 1px solid #ddd0ca;
+    background: #fcf8f6;
+    font-size: 1.1rem;
+    color: #3d2c27;
+    outline: none;
+    transition: 0.25s;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.meeting-input-area input:focus {
+    border-color: #b8a39b;
+    box-shadow: 0 0 0 4px rgba(160, 130, 120, 0.12);
+    background: #fffdfc;
+}
+
+.meeting-input-area input::placeholder {
+    color: #b8a59e;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.meeting-input-area .hint {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: #b09a93;
+    letter-spacing: 1px;
+    background: rgba(230, 215, 208, 0.2);
+    padding: 8px 20px;
+    border-radius: 40px;
+    display: inline-block;
+    backdrop-filter: blur(2px);
+}
+
+/* ===== СТАТУС ОТПРАВКИ ===== */
+.sending-status {
+    margin-top: 14px;
+    font-size: 0.85rem;
+    color: #7a6560;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    min-height: 24px;
+}
+
+.sending-status.visible {
+    opacity: 1;
+}
+
+.sending-status.success {
+    color: #5a7a6a;
+}
+
+.sending-status.error {
+    color: #b05a5a;
+}
+
+/* ===== "УБЕГАЮЩАЯ" КНОПКА ===== */
+.no-float {
+    position: fixed !important;
+    z-index: 9999;
+    transition: none;
+    cursor: default;
+    pointer-events: auto;
+    box-shadow: 0 16px 40px rgba(80, 60, 55, 0.25);
+    background: #ece3df;
+    color: #4d3a35;
+    border: 1px solid #d5c5bf;
+    font-size: 1.2rem;
+    padding: 14px 40px;
+    border-radius: 80px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    font-family: 'Georgia', serif;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ===== АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ ===== */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+        align-items: flex-start;
+        padding-top: 30px;
+    }
+
+    .invitation-card {
+        padding: 28px 20px 36px;
+        border-radius: 24px;
+    }
+
+    .greeting h1 {
+        font-size: 1.8rem;
+    }
+
+    .greeting p {
+        font-size: 1rem;
+    }
+
+    .modal-overlay {
+        padding: 12px;
+        align-items: flex-end;
+    }
+
+    .modal-content {
+        padding: 32px 20px 28px;
+        border-radius: 28px 28px 24px 24px;
+        max-width: 100%;
+        margin-bottom: 0;
+    }
+
+    .modal-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .modal-content .question {
+        font-size: 1.1rem;
+        margin: 8px 0 24px;
+    }
+
+    .buttons-row {
+        gap: 14px;
+        flex-direction: row;
+    }
+
+    .btn {
+        padding: 14px 28px;
+        font-size: 1.05rem;
+        min-width: 90px;
+        flex: 1;
+        max-width: 160px;
+    }
+
+    .meeting-input-area {
+        margin-top: 24px;
+        padding-top: 20px;
+    }
+
+    .meeting-input-area input {
+        padding: 18px 16px;
+        font-size: 1rem;
+        border-radius: 40px;
+    }
+
+    .no-float {
+        font-size: 1rem;
+        padding: 12px 28px;
+        border-radius: 60px;
+    }
+
+    .sending-status {
+        font-size: 0.8rem;
+    }
+
+    .meeting-input-area .hint {
+        font-size: 0.8rem;
+        padding: 6px 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    .btn {
+        padding: 12px 18px;
+        font-size: 0.95rem;
+        min-width: 70px;
+    }
+
+    .modal-content {
+        padding: 24px 14px 22px;
+    }
+
+    .invitation-card {
+        padding: 20px 16px 28px;
+    }
+
+    .greeting h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .modal-content {
+        max-width: 440px;
+        padding: 40px 28px 36px;
+    }
+
+    .btn {
+        padding: 16px 40px;
+        font-size: 1.15rem;
+    }
+
+    .invitation-card {
+        padding: 36px 28px 42px;
+    }
+}
+
+.hidden {
+    display: none !important;
+}

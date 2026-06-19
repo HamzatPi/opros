@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Приглашение</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="invitation-card" id="invitationCard">
+        <div class="greeting">
+            <h1>Привет</h1>
+            <div class="divider"></div>
+            <p>Я хочу пригласить тебя на встречу</p>
+            <div class="sub">Ответь на вопрос в окне</div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content" id="modalContent">
+            <h2>Вопрос</h2>
+            <div class="question">
+                <span>—</span> Ты свободна? <span>—</span>
+            </div>
+
+            <div class="buttons-row" id="buttonRow">
+                <button class="btn btn-yes" id="btnYes">Да</button>
+                <button class="btn btn-no" id="btnNo">Нет</button>
+            </div>
+
+            <div class="meeting-input-area" id="meetingArea">
+                <label for="placeInput">Где и когда встретимся</label>
+                <input type="text" id="placeInput" placeholder="Напиши место и время" autocomplete="off">
+                <div class="sending-status" id="sendingStatus"></div>
+                <div class="hint" id="hintText">Напиши и нажми Enter</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
