@@ -92,9 +92,12 @@ body {
     box-shadow: 0 40px 80px rgba(40, 30, 28, 0.3);
     border: 1px solid #ece2de;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.modal-content h2 {
+/* ===== ПЕРВЫЙ ЭКРАН ===== */
+#firstScreen h2 {
     font-size: 1.6rem;
     font-weight: 400;
     color: #3d2c27;
@@ -102,7 +105,7 @@ body {
     margin-bottom: 6px;
 }
 
-.modal-content .question {
+.question {
     font-size: 1.3rem;
     font-weight: 300;
     color: #7a6560;
@@ -110,7 +113,7 @@ body {
     letter-spacing: 1px;
 }
 
-.modal-content .question span {
+.question span {
     display: inline-block;
     margin: 0 4px;
 }
@@ -174,11 +177,8 @@ body {
     background: #ece3df;
 }
 
-/* ===== ПОЛЕ ВВОДА ===== */
+/* ===== ВТОРОЙ ЭКРАН: ПОЛЯ ВВОДА ===== */
 .meeting-input-area {
-    margin-top: 32px;
-    padding-top: 28px;
-    border-top: 1px solid #e6d8d2;
     display: none;
     animation: slideUp 0.5s ease forwards;
 }
@@ -192,57 +192,77 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.meeting-input-area label {
-    font-size: 0.8rem;
-    color: #7a6560;
-    display: block;
-    margin-bottom: 16px;
-    font-weight: 300;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-.meeting-input-area input {
+.input-group label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #7a6560;
+    margin-bottom: 8px;
+    font-weight: 300;
+}
+
+.input-group input {
     width: 100%;
     padding: 16px 20px;
-    border-radius: 60px;
+    border-radius: 40px;
     border: 1px solid #ddd0ca;
     background: #fcf8f6;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: #3d2c27;
     outline: none;
     transition: 0.25s;
-    text-align: center;
     font-family: 'Georgia', serif;
     -webkit-appearance: none;
     appearance: none;
 }
 
-.meeting-input-area input:focus {
+.input-group input:focus {
     border-color: #b8a39b;
     box-shadow: 0 0 0 4px rgba(160, 130, 120, 0.12);
     background: #fffdfc;
 }
 
-.meeting-input-area input::placeholder {
+.input-group input::placeholder {
     color: #b8a59e;
     font-weight: 300;
     letter-spacing: 0.5px;
 }
 
-.meeting-input-area .hint {
-    margin-top: 16px;
-    font-size: 0.85rem;
-    color: #b09a93;
-    letter-spacing: 1px;
-    background: rgba(230, 215, 208, 0.2);
-    padding: 8px 20px;
-    border-radius: 40px;
-    display: inline-block;
-    backdrop-filter: blur(2px);
+.btn-send {
+    width: 100%;
+    padding: 16px;
+    background: #e4d5cf;
+    border-color: #d0bbb3;
+    color: #3d2c27;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-top: 8px;
+    box-shadow: 0 4px 12px rgba(120, 90, 80, 0.12);
+    transition: all 0.25s ease;
 }
 
-/* ===== СТАТУС ОТПРАВКИ ===== */
+.btn-send:hover {
+    background: #dccac2;
+    transform: scale(1.01);
+    box-shadow: 0 8px 20px rgba(120, 90, 80, 0.18);
+}
+
+.btn-send:active {
+    transform: scale(0.97);
+}
+
+.btn-send:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
 .sending-status {
     margin-top: 14px;
     font-size: 0.85rem;
@@ -263,6 +283,64 @@ body {
 
 .sending-status.error {
     color: #b05a5a;
+}
+
+.hint {
+    margin-top: 12px;
+    font-size: 0.8rem;
+    color: #b09a93;
+    letter-spacing: 1px;
+    background: rgba(230, 215, 208, 0.2);
+    padding: 6px 16px;
+    border-radius: 40px;
+    display: inline-block;
+    backdrop-filter: blur(2px);
+}
+
+/* ===== ТРЕТИЙ ЭКРАН: БЛАГОДАРНОСТЬ ===== */
+.thank-you-area {
+    display: none;
+    padding: 20px 0 10px;
+    animation: fadeIn 0.6s ease;
+}
+
+.thank-you-area.active {
+    display: block;
+}
+
+.thank-you-icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.thank-you-area h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #3d2c27;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.thank-you-area p {
+    font-size: 1.1rem;
+    color: #7a6560;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+}
+
+.btn-close {
+    background: #e4d5cf;
+    border-color: #d0bbb3;
+    color: #3d2c27;
+    padding: 12px 44px;
+    box-shadow: 0 4px 12px rgba(120, 90, 80, 0.12);
+}
+
+.btn-close:hover {
+    background: #dccac2;
+    transform: scale(1.02);
 }
 
 /* ===== "УБЕГАЮЩАЯ" КНОПКА ===== */
@@ -291,7 +369,7 @@ body {
     -webkit-user-select: none;
 }
 
-/* ===== АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ ===== */
+/* ===== АДАПТАЦИЯ ===== */
 @media (max-width: 480px) {
     body {
         padding: 12px;
@@ -328,7 +406,7 @@ body {
         font-size: 1.3rem;
     }
 
-    .modal-content .question {
+    .question {
         font-size: 1.1rem;
         margin: 8px 0 24px;
     }
@@ -346,15 +424,15 @@ body {
         max-width: 160px;
     }
 
-    .meeting-input-area {
-        margin-top: 24px;
-        padding-top: 20px;
-    }
-
-    .meeting-input-area input {
+    .input-group input {
         padding: 18px 16px;
         font-size: 1rem;
         border-radius: 40px;
+    }
+
+    .btn-send {
+        padding: 18px;
+        font-size: 1rem;
     }
 
     .no-float {
@@ -367,9 +445,26 @@ body {
         font-size: 0.8rem;
     }
 
-    .meeting-input-area .hint {
-        font-size: 0.8rem;
-        padding: 6px 16px;
+    .hint {
+        font-size: 0.75rem;
+        padding: 4px 14px;
+    }
+
+    .thank-you-icon {
+        font-size: 3rem;
+    }
+
+    .thank-you-area h2 {
+        font-size: 1.6rem;
+    }
+
+    .thank-you-area p {
+        font-size: 1rem;
+    }
+
+    .btn-close {
+        padding: 14px 32px;
+        font-size: 1rem;
     }
 }
 

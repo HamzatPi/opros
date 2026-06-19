@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Приглашение</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -19,25 +19,44 @@
 
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content" id="modalContent">
-            <h2>Вопрос</h2>
-            <div class="question">
-                <span>—</span> Ты свободна? <span>—</span>
+            <!-- Первый экран: вопрос и кнопки -->
+            <div id="firstScreen">
+                <h2>Вопрос</h2>
+                <div class="question">
+                    <span>—</span> Ты свободна? <span>—</span>
+                </div>
+
+                <div class="buttons-row" id="buttonRow">
+                    <button class="btn btn-yes" id="btnYes">Да</button>
+                    <button class="btn btn-no" id="btnNo">Нет</button>
+                </div>
             </div>
 
-            <div class="buttons-row" id="buttonRow">
-                <button class="btn btn-yes" id="btnYes">Да</button>
-                <button class="btn btn-no" id="btnNo">Нет</button>
-            </div>
-
+            <!-- Второй экран: поля для ввода -->
             <div class="meeting-input-area" id="meetingArea">
-                <label for="placeInput">Где и когда встретимся</label>
-                <input type="text" id="placeInput" placeholder="Напиши место и время" autocomplete="off">
+                <div class="input-group">
+                    <label for="placeInput">📍 Где встречаемся?</label>
+                    <input type="text" id="placeInput" placeholder="Напиши место" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="timeInput">🕒 Когда?</label>
+                    <input type="datetime-local" id="timeInput">
+                </div>
+                <button class="btn btn-send" id="sendBtn">Отправить</button>
                 <div class="sending-status" id="sendingStatus"></div>
-                <div class="hint" id="hintText">Напиши и нажми Enter</div>
+                <div class="hint" id="hintText">Заполни оба поля</div>
+            </div>
+
+            <!-- Третий экран: благодарность -->
+            <div class="thank-you-area" id="thankYouArea">
+                <div class="thank-you-icon">🌸</div>
+                <h2>Спасибо!</h2>
+                <p>Буду ждать встречи</p>
+                <button class="btn btn-close" id="closeBtn">Закрыть</button>
             </div>
         </div>
     </div>
 
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
